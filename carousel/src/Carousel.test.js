@@ -90,10 +90,16 @@ it("hides the left arrow if on the first image", function() {
     />
   );
 
-  const leftArrow = container.querySelector(".bi-arrow-left-circle");
+  // check that the left arrow is not visible on the first card
+  let leftArrow = container.querySelector(".bi-arrow-left-circle");
   expect(leftArrow).not.toBeInTheDocument()
 
+  const rightArrow = container.querySelector(".bi-arrow-right-circle");
+  expect(rightArrow).toBeInTheDocument();
+
   fireEvent.click(rightArrow);
+  // check that the left arrow is now visible
+  leftArrow = container.querySelector(".bi-arrow-left-circle");
   expect(leftArrow).toBeInTheDocument();
 
   fireEvent.click(rightArrow);
@@ -114,6 +120,7 @@ it("hides the right arrow if on the last image", function() {
   fireEvent.click(rightArrow);
   expect(rightArrow).toBeInTheDocument();
 
+  // check that the right arrow is not visible on the last card
   fireEvent.click(rightArrow);
   expect(rightArrow).not.toBeInTheDocument();
 });

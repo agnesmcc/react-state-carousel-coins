@@ -34,20 +34,24 @@ import Card from "./Card";
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
-        <i
-          className="bi bi-arrow-left-circle"
-          onClick={goBackward}
-        />
+        {currCardIdx !== 0 && (
+          <i
+            className="bi bi-arrow-left-circle"
+            onClick={goBackward}
+          />
+        )}
         <Card
           caption={currCard.caption}
           src={currCard.src}
           currNum={currCardIdx + 1}
           totalNum={total}
         />
-        <i
-          className="bi bi-arrow-right-circle"
-          onClick={goForward}
-        />
+        {currCardIdx !== (total - 1)  && (
+          <i
+            className="bi bi-arrow-right-circle"
+            onClick={goForward}
+          />
+        )}
       </div>
     </div>
   );
